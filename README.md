@@ -1,30 +1,65 @@
-# React + TypeScript + Vite
+# 🍹 Cocktails Recipes
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
 
-Currently, two official plugins are available:
+Una aplicación web moderna para explorar y descubrir recetas de cócteles deliciosos. Desarrollada con las últimas tecnologías web para ofrecer una experiencia de usuario excepcional.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Características
 
-## Expanding the ESLint configuration
+- 🔍 Búsqueda avanzada de cócteles
+- 📱 Diseño responsivo
+- 🎨 Interfaz moderna y atractiva
+- ⚡ Rendimiento optimizado con Vite
+- 🎯 Navegación fluida con React Router
+- 🎭 Animaciones suaves con Motion
+- 🎨 Estilos personalizables con Tailwind CSS
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🚀 Tecnologías Utilizadas
 
-- Configure the top-level `parserOptions` property like this:
+- **Frontend**: React 18
+- **Lenguaje**: TypeScript
+- **Estilos**: Tailwind CSS
+- **Bundler**: Vite
+- **Enrutamiento**: React Router
+- **Animaciones**: Motion
+- **Iconos**: Lucide React
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## 📦 Instalación
+
+1. Clona el repositorio:
+```bash
+git clone https://github.com/tu-usuario/cocktails-recipes.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Instala las dependencias:
+```bash
+cd cocktails-recipes
+npm install
+```
+
+3. Inicia el servidor de desarrollo:
+```bash
+npm run dev
+```
+
+## 🛠️ Scripts Disponibles
+
+- `npm run dev`: Inicia el servidor de desarrollo
+- `npm run build`: Construye la aplicación para producción
+- `npm run lint`: Ejecuta el linter
+- `npm run preview`: Previsualiza la build de producción
+
+## 📝 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+
+## 🤝 Contribuciones
+
+Las contribuciones son bienvenidas. Por favor, abre un issue o envía un pull request.
+
+---
+
+Desarrollado con ❤️ por David Ventura

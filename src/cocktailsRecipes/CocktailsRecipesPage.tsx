@@ -16,7 +16,6 @@ import { selectOptions } from "../data";
 export const CocktailsRecipesPage = () => {
   const [value, setValue] = useState("");
   const handleValueChange = (value: string) => {
-    console.log(value);
     setValue(value);
   };
   return (
@@ -30,24 +29,29 @@ export const CocktailsRecipesPage = () => {
       <div className="relative z-10">
         <div className="select-container flex flex-col items-center justify-center gap-3">
           <div className="select-title text-2xl font-bold">
-            ¿Qué deseas agregar?
+            ¿Deseas agregar un cóctel o una receta?
           </div>
           <Select onValueChange={handleValueChange}>
-            <SelectTrigger className="w-[380px] bg-white text-black font-bold">
+            <SelectTrigger className="w-[380px] bg-white text-black font-bold cursor-pointer">
               <SelectValue placeholder="Selecciona una opción" />
             </SelectTrigger>
             <SelectContent>
+              <SelectItem value="----">----</SelectItem>
               {selectOptions.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
+                <SelectItem
+                  key={option.value}
+                  value={option.value}
+                  className="cursor-pointer"
+                >
                   {option.label}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
-        <FormCocktailsComponent />
-        {/* {value === "cocktail" && <FormCocktailsComponent />}
-        {value === "recipe" && <FormRecipesComponent />} */}
+        {/* <FormCocktailsComponent /> */}
+        {value === "cocktail" && <FormCocktailsComponent />}
+        {value === "recipe" && <FormRecipesComponent />} 
         <ListComponent />
       </div>
     </div>

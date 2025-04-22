@@ -103,6 +103,7 @@ export const essentialEquipment = [
 
 export const mixingMethods = [
   {
+    value: "Shaking",
     name_english: "Shaking",
     name_spanish: "Batido",
     description_english:
@@ -111,6 +112,7 @@ export const mixingMethods = [
       "Mezcla enérgica de ingredientes con hielo en una coctelera para enfriar, diluir y airear la bebida. Común en cócteles con cítricos, lácteos o huevo.",
   },
   {
+    value: "Stirring",
     name_english: "Stirring",
     name_spanish: "Removido",
     description_english:
@@ -119,6 +121,7 @@ export const mixingMethods = [
       "Mezcla suave de ingredientes con hielo en un vaso mezclador usando una cuchara de bar. Conserva claridad y textura, ideal para cócteles a base de destilados como el Martini.",
   },
   {
+    value: "Building",
     name_english: "Building",
     name_spanish: "Construcción en vaso",
     description_english:
@@ -127,6 +130,7 @@ export const mixingMethods = [
       "Preparación directa en el vaso servidor (usualmente sobre hielo). Típico para highballs como el Gin Tónic.",
   },
   {
+    value: "Blending",
     name_english: "Blending",
     name_spanish: "Licuado",
     description_english:
@@ -135,6 +139,7 @@ export const mixingMethods = [
       "Mezcla de ingredientes con hielo en licuadora eléctrica para cócteles cremosos o congelados como Daiquiris o Piñas Coladas.",
   },
   {
+    value: "Rolling",
     name_english: "Rolling",
     name_spanish: "Rodado",
     description_english:
@@ -143,6 +148,7 @@ export const mixingMethods = [
       "Traspaso de ingredientes entre dos recipientes (ej: de coctelera a vaso) para mezclar y airear sin batir. Usado en Bloody Marys.",
   },
   {
+    value: "Muddling",
     name_english: "Muddling",
     name_spanish: "Pisado/Majado",
     description_english:
@@ -151,6 +157,7 @@ export const mixingMethods = [
       "Triturar hierbas o frutas con un mortero para liberar jugos y aceites. Esencial para Mojitos o Old Fashioneds.",
   },
   {
+    value: "Layering",
     name_english: "Layering",
     name_spanish: "Encapasado",
     description_english:
@@ -159,6 +166,7 @@ export const mixingMethods = [
       "Vertido cuidadoso de ingredientes por densidad para crear capas visuales (con cuchara de bar). Usado en shots como el B-52.",
   },
   {
+    value: "Dry Shaking",
     name_english: "Dry Shaking",
     name_spanish: "Batido en seco",
     description_english:
@@ -167,6 +175,7 @@ export const mixingMethods = [
       "Batir primero sin hielo (para emulsificar), luego con hielo. Usado en cócteles con clara de huevo como el Whiskey Sour.",
   },
   {
+    value: "Throwing",
     name_english: "Throwing",
     name_spanish: "Lanzado",
     description_english:
@@ -175,6 +184,7 @@ export const mixingMethods = [
       "Técnica dinámica en la que el líquido se vierte entre dos recipientes (normalmente latas o vasos) en movimiento de arco para airear y mezclar el cóctel sin sobredilución. Usado en bebidas a base de destilados para añadir textura.",
   },
   {
+    value: "Double Strain",
     name_english: "Double Strain",
     name_spanish: "Doble Colado",
     description_english:
@@ -186,6 +196,7 @@ export const mixingMethods = [
 
 export const glassware = [
   {
+    value: "Cocktail Glass (Martini Glass)",
     name_spanish: "Copa Cóctel (Copa Martini)",
     name_english: "Cocktail Glass (Martini Glass)",
     description_spanish:
@@ -195,6 +206,7 @@ export const glassware = [
     examples_cocktails: ["Martini", "Cosmopolitan", "Manhattan"],
   },
   {
+    value: "Old Fashioned Glass (Rocks Glass)",
     name_spanish: "Vaso Old Fashioned (Vaso bajo)",
     name_english: "Old Fashioned Glass (Rocks Glass)",
     description_spanish:
@@ -204,6 +216,7 @@ export const glassware = [
     examples_cocktails: ["Old Fashioned", "Negroni", "Whisky con hielo"],
   },
   {
+    value: "Highball Glass",
     name_spanish: "Highball (Vaso alto)",
     name_english: "Highball Glass",
     description_spanish:
@@ -213,6 +226,7 @@ export const glassware = [
     examples_cocktails: ["Gin Tonic", "Cuba Libre", "Mojito"],
   },
   {
+    value: "Champagne Flute",
     name_spanish: "Copa Flauta",
     name_english: "Champagne Flute",
     description_spanish:
@@ -222,6 +236,7 @@ export const glassware = [
     examples_cocktails: ["Champagne Cocktail", "Mimosa", "Bellini"],
   },
   {
+    value: "Margarita Glass",
     name_spanish: "Copa Margarita",
     name_english: "Margarita Glass",
     description_spanish:
@@ -231,6 +246,7 @@ export const glassware = [
     examples_cocktails: ["Margarita", "Daiquiri", "Frozen Piña Colada"],
   },
   {
+    value: "Collins Glass",
     name_spanish: "Vaso Collins",
     name_english: "Collins Glass",
     description_spanish:
@@ -240,6 +256,7 @@ export const glassware = [
     examples_cocktails: ["Tom Collins", "Moscow Mule", "Long Island Iced Tea"],
   },
   {
+    value: "Snifter (Brandy Glass)",
     name_spanish: "Copa Balón (Copa de Brandy)",
     name_english: "Snifter (Brandy Glass)",
     description_spanish:
@@ -249,7 +266,8 @@ export const glassware = [
     examples_cocktails: ["Brandy Alexander", "Cognac", "Añejo Old Fashioned"],
   },
   {
-    name_spanish: "Hurricane",
+    value: "Hurricane Glass",
+    name_spanish: "Copa Hurricane",
     name_english: "Hurricane Glass",
     description_spanish:
       "Copa alta y curvada, originaria de Nueva Orleans, para cócteles tropicales.",
@@ -258,6 +276,7 @@ export const glassware = [
     examples_cocktails: ["Hurricane", "Pina Colada", "Zombie"],
   },
   {
+    value: "Beer Mug (Stein)",
     name_spanish: "Jarra de Cerveza (Jarra de Bar)",
     name_english: "Beer Mug (Stein)",
     description_spanish:
@@ -267,6 +286,7 @@ export const glassware = [
     examples_cocktails: ["Cerveza rubia", "Cerveza negra", "Radler"],
   },
   {
+    value: "Pilsner Glass",
     name_spanish: "Vaso Pilsner",
     name_english: "Pilsner Glass",
     description_spanish:
@@ -276,6 +296,7 @@ export const glassware = [
     examples_cocktails: ["Pilsner", "Lager", "Helles"],
   },
   {
+    value: "Beer Tulip Glass",
     name_spanish: "Copa de Cerveza Tipo Tulipán",
     name_english: "Beer Tulip Glass",
     description_spanish:
@@ -285,6 +306,7 @@ export const glassware = [
     examples_cocktails: ["IPA", "Stout", "Belgian Ale"],
   },
   {
+    value: "Pint Glass",
     name_spanish: "Vaso Pint (Vaso de Cerveza Británico)",
     name_english: "Pint Glass",
     description_spanish:
@@ -293,6 +315,7 @@ export const glassware = [
     examples_cocktails: ["Porter", "Bitter", "Stout"],
   },
   {
+    value: "White Wine Glass",
     name_spanish: "Copa de Vino Blanco",
     name_english: "White Wine Glass",
     description_spanish:
@@ -302,6 +325,7 @@ export const glassware = [
     examples_cocktails: ["Sangría Blanca", "Spritzer", "Kir Royale"],
   },
   {
+    value: "Red Wine Glass",
     name_spanish: "Copa de Vino Tinto",
     name_english: "Red Wine Glass",
     description_spanish:
@@ -310,6 +334,7 @@ export const glassware = [
     examples_cocktails: ["Sangría", "Kalimotxo", "Tinto de Verano"],
   },
   {
+    value: "Shot Glass",
     name_spanish: "Vaso Shot (Caballito)",
     name_english: "Shot Glass",
     description_spanish:
@@ -318,6 +343,7 @@ export const glassware = [
     examples_cocktails: ["Tequila Shot", "Jägerbomb", "B-52"],
   },
   {
+    value: "Sherry Glass",
     name_spanish: "Copa Sherry (Copa de Jerez)",
     name_english: "Sherry Glass",
     description_spanish:
@@ -330,6 +356,7 @@ export const glassware = [
 
 export const iceTypes = [
   {
+    value: "Ice Cube",
     name_english: "Ice Cube",
     name_spanish: "Cubo de Hielo",
     description_spanish:
@@ -339,6 +366,7 @@ export const iceTypes = [
     examples_cocktails: ["Old Fashioned", "Whiskey on the rocks", "Negroni"],
   },
   {
+    value: "Crushed Ice",
     name_english: "Crushed Ice",
     name_spanish: "Hielo Picado",
     description_spanish:
@@ -348,6 +376,7 @@ export const iceTypes = [
     examples_cocktails: ["Mojito", "Mai Tai", "Mint Julep"],
   },
   {
+    value: "Cracked Ice",
     name_english: "Cracked Ice",
     name_spanish: "Hielo Quebrado",
     description_spanish:
@@ -357,6 +386,7 @@ export const iceTypes = [
     examples_cocktails: ["Caipirinha", "Dark 'n' Stormy", "Zombie"],
   },
   {
+    value: "Sphere Ice",
     name_english: "Sphere Ice",
     name_spanish: "Esfera de Hielo",
     description_spanish:
@@ -366,6 +396,7 @@ export const iceTypes = [
     examples_cocktails: ["High-end Whiskey", "Añejo Tequila", "Premium Rum"],
   },
   {
+    value: "Nugget Ice",
     name_english: "Nugget Ice",
     name_spanish: "Hielo en Pepitas",
     description_spanish:
@@ -379,6 +410,7 @@ export const iceTypes = [
     ],
   },
   {
+    value: "Block Ice",
     name_english: "Block Ice",
     name_spanish: "Bloque de Hielo",
     description_spanish:
@@ -392,8 +424,9 @@ export const iceTypes = [
     ],
   },
   {
-    name_english: "Dry Ice (for effect)",
-    name_spanish: "Hielo Seco (para efecto)",
+    value: "Dry Ice",
+    name_english: "Dry Ice",
+    name_spanish: "Hielo Seco",
     description_spanish:
       "CO2 sólido que crea un efecto de humo al contacto con líquidos. ¡Solo para uso decorativo y con precaución!",
     description_english:
@@ -408,6 +441,7 @@ export const iceTypes = [
 
 export const garnishTypes = [
   {
+    value: "Orange twist",
     name_english: "Orange twist",
     name_spanish: "Twist de naranja",
     description_spanish:
@@ -417,6 +451,7 @@ export const garnishTypes = [
     examples_cocktails: ["Old Fashioned", "Manhattan", "Negroni"],
   },
   {
+    value: "Lemon wedge",
     name_english: "Lemon wedge",
     name_spanish: "Gajo de limón",
     description_spanish:
@@ -426,6 +461,7 @@ export const garnishTypes = [
     examples_cocktails: ["Corona beer", "Tequila Sunrise", "Gin and Tonic"],
   },
   {
+    value: "Lime wheel",
     name_english: "Lime wheel",
     name_spanish: "Rueda de lima",
     description_spanish: "Una rodaja fina de lima utilizada como decoración",
@@ -433,6 +469,7 @@ export const garnishTypes = [
     examples_cocktails: ["Mojito", "Caipirinha", "Margarita"],
   },
   {
+    value: "Maraschino cherry",
     name_english: "Maraschino cherry",
     name_spanish: "Cereza marrasquino",
     description_spanish: "Cereza confitada y preservada en jarabe dulce",
@@ -440,6 +477,7 @@ export const garnishTypes = [
     examples_cocktails: ["Shirley Temple", "Manhattan", "Singapore Sling"],
   },
   {
+    value: "Mint sprig",
     name_english: "Mint sprig",
     name_spanish: "Rama de menta",
     description_spanish: "Ramo fresco de hojas de menta para aromatizar",
@@ -447,6 +485,7 @@ export const garnishTypes = [
     examples_cocktails: ["Mojito", "Mint Julep", "Southside"],
   },
   {
+    value: "Pineapple wedge",
     name_english: "Pineapple wedge",
     name_spanish: "Gajo de piña",
     description_spanish: "Trozo de piña fresca como decoración comestible",
@@ -454,6 +493,7 @@ export const garnishTypes = [
     examples_cocktails: ["Piña Colada", "Zombie", "Blue Hawaiian"],
   },
   {
+    value: "Cucumber slice",
     name_english: "Cucumber slice",
     name_spanish: "Rodaja de pepino",
     description_spanish: "Finas rodajas de pepino para cocteles refrescantes",
@@ -461,6 +501,7 @@ export const garnishTypes = [
     examples_cocktails: ["Gin Cucumber", "Pimm's Cup", "Spa Water"],
   },
   {
+    value: "Celery stalk",
     name_english: "Celery stalk",
     name_spanish: "Tallo de apio",
     description_spanish: "Palo de apio fresco como guarnición y agitador",
@@ -468,6 +509,7 @@ export const garnishTypes = [
     examples_cocktails: ["Bloody Mary", "Michelada", "Caesar"],
   },
   {
+    value: "Cinnamon stick",
     name_english: "Cinnamon stick",
     name_spanish: "Rama de canela",
     description_spanish: "Palo de canela para aromatizar bebidas calientes",
@@ -475,6 +517,7 @@ export const garnishTypes = [
     examples_cocktails: ["Hot Toddy", "Mulled Wine", "Apple Cider"],
   },
   {
+    value: "Star anise",
     name_english: "Star anise",
     name_spanish: "Anís estrellado",
     description_spanish: "Flor de anís estrellado como decoración aromática",
@@ -482,6 +525,7 @@ export const garnishTypes = [
     examples_cocktails: ["Sazerac", "Absinthe cocktails", "Chai Tea"],
   },
   {
+    value: "Edible flower",
     name_english: "Edible flower",
     name_spanish: "Flor comestible",
     description_spanish:
@@ -495,6 +539,7 @@ export const garnishTypes = [
     ],
   },
   {
+    value: "Olive",
     name_english: "Olive",
     name_spanish: "Aceituna",
     description_spanish: "Aceituna verde o negra para cocteles salados",
@@ -502,6 +547,7 @@ export const garnishTypes = [
     examples_cocktails: ["Martini", "Dirty Martini", "Gibson"],
   },
   {
+    value: "Grated nutmeg",
     name_english: "Grated nutmeg",
     name_spanish: "Nuez moscada rallada",
     description_spanish:
@@ -510,6 +556,7 @@ export const garnishTypes = [
     examples_cocktails: ["Eggnog", "Brandy Alexander", "Hot Buttered Rum"],
   },
   {
+    value: "Cocktail umbrella",
     name_english: "Cocktail umbrella",
     name_spanish: "Sombrilla de cóctel",
     description_spanish:
@@ -518,6 +565,7 @@ export const garnishTypes = [
     examples_cocktails: ["Mai Tai", "Zombie", "Blue Hawaii"],
   },
   {
+    value: "Sugar rim",
     name_english: "Sugar rim",
     name_spanish: "Borde azucarado",
     description_spanish:
@@ -526,6 +574,7 @@ export const garnishTypes = [
     examples_cocktails: ["Margarita", "Sidecar", "Lemon Drop"],
   },
   {
+    value: "Salt rim",
     name_english: "Salt rim",
     name_spanish: "Borde salado",
     description_spanish:
@@ -537,6 +586,7 @@ export const garnishTypes = [
 
 export const distillates_spirits = [
   {
+    value: "Vodka",
     name_english: "Vodka",
     name_spanish: "Vodka",
     description_spanish:
@@ -553,6 +603,7 @@ export const distillates_spirits = [
       "Originario de Rusia y Polonia en el siglo XIV, el vodka se convirtió en la bebida nacional de Rusia. / Originated in Russia and Poland in the 14th century, vodka became Russia's national drink.",
   },
   {
+    value: "Whiskey",
     name_english: "Whiskey",
     name_spanish: "Whisky",
     description_spanish:
@@ -569,6 +620,7 @@ export const distillates_spirits = [
       "Tiene sus raíces en Irlanda y Escocia en el siglo XV. / Has its roots in 15th century Ireland and Scotland.",
   },
   {
+    value: "Ron",
     name_english: "Rum",
     name_spanish: "Ron",
     description_spanish:
@@ -580,6 +632,7 @@ export const distillates_spirits = [
       "Originario del Caribe en el siglo XVII, vinculado a la industria azucarera. / Originated in the 17th century Caribbean, linked to the sugar industry.",
   },
   {
+    value: "Gin",
     name_english: "Gin",
     name_spanish: "Ginebra",
     description_spanish:
@@ -591,6 +644,7 @@ export const distillates_spirits = [
       "Desarrollado en Holanda en el siglo XVII como medicina, popularizado en Inglaterra. / Developed in Holland in the 17th century as medicine, popularized in England.",
   },
   {
+    value: "Tequila",
     name_english: "Tequila",
     name_spanish: "Tequila",
     description_spanish:
@@ -602,6 +656,7 @@ export const distillates_spirits = [
       "Originario del siglo XVI en la región de Tequila, México. / Originated in 16th century in the Tequila region of Mexico.",
   },
   {
+    value: "Brandy",
     name_english: "Brandy",
     name_spanish: "Brandy",
     description_spanish:
@@ -618,6 +673,7 @@ export const distillates_spirits = [
       "Tiene sus orígenes en el siglo XII, desarrollado como método para conservar el vino. / Has its origins in the 12th century, developed as a method to preserve wine.",
   },
   {
+    value: "Triple Sec",
     name_english: "Triple Sec",
     name_spanish: "Triple Sec",
     description_spanish:
@@ -634,6 +690,7 @@ export const distillates_spirits = [
       "Creado en Francia en el siglo XIX por Jean-Baptiste Combier. / Created in France in the 19th century by Jean-Baptiste Combier.",
   },
   {
+    value: "Amaretto",
     name_english: "Amaretto",
     name_spanish: "Amaretto",
     description_spanish:
@@ -650,6 +707,7 @@ export const distillates_spirits = [
       "Según la leyenda, creado en Saronno en 1525 como homenaje a un artista. / Legend says it was created in Saronno in 1525 as tribute to an artist.",
   },
   {
+    value: "Kahlúa",
     name_english: "Kahlúa",
     name_spanish: "Kahlúa",
     description_spanish:
@@ -666,6 +724,7 @@ export const distillates_spirits = [
       "Creado en 1936 en Veracruz, México. / Created in 1936 in Veracruz, Mexico.",
   },
   {
+    value: "Baileys Irish Cream",
     name_english: "Baileys Irish Cream",
     name_spanish: "Baileys Irish Cream",
     description_spanish:
@@ -677,6 +736,7 @@ export const distillates_spirits = [
       "Lanzado en 1974 como el primer licor de crema de whiskey. / Launched in 1974 as the first whiskey cream liqueur.",
   },
   {
+    value: "Mezcal",
     name_english: "Mezcal",
     name_spanish: "Mezcal",
     description_spanish:
@@ -693,6 +753,7 @@ export const distillates_spirits = [
       "Originario de Oaxaca, México, con una tradición de más de 400 años. / Originated in Oaxaca, Mexico, with over 400 years of tradition.",
   },
   {
+    value: "Absinthe",
     name_english: "Absinthe",
     name_spanish: "Absenta",
     description_spanish:
@@ -709,6 +770,7 @@ export const distillates_spirits = [
       "Popular en el siglo XIX entre artistas europeos, prohibido temporalmente por su reputación alucinógena. / Popular in the 19th century among European artists, temporarily banned for its hallucinogenic reputation.",
   },
   {
+    value: "Pisco",
     name_english: "Pisco",
     name_spanish: "Pisco",
     description_spanish:
@@ -720,6 +782,7 @@ export const distillates_spirits = [
       "Tiene sus raíces en el siglo XVI, introducido por colonizadores españoles. / Has its roots in the 16th century, introduced by Spanish colonizers.",
   },
   {
+    value: "Cachaça",
     name_english: "Cachaça",
     name_spanish: "Cachaça",
     description_spanish:
@@ -736,6 +799,7 @@ export const distillates_spirits = [
       "Producido desde el siglo XVI en Brasil, inicialmente por esclavos en plantaciones. / Produced since the 16th century in Brazil, initially by slaves on plantations.",
   },
   {
+    value: "Sake",
     name_english: "Sake",
     name_spanish: "Sake",
     description_spanish:
@@ -752,6 +816,7 @@ export const distillates_spirits = [
       "Data del siglo III en Japón, con fuerte significado cultural y religioso. / Dates back to the 3rd century in Japan, with strong cultural and religious significance.",
   },
   {
+    value: "Jägermeister",
     name_english: "Jägermeister",
     name_spanish: "Jägermeister",
     description_spanish:
@@ -768,6 +833,7 @@ export const distillates_spirits = [
       "Creado en 1934 en Alemania, inicialmente como digestivo. / Created in 1934 in Germany, initially as a digestif.",
   },
   {
+    value: "Campari",
     name_english: "Campari",
     name_spanish: "Campari",
     description_spanish:
@@ -784,6 +850,7 @@ export const distillates_spirits = [
       "Inventado en 1860 por Gaspare Campari en Novara, Italia. / Invented in 1860 by Gaspare Campari in Novara, Italy.",
   },
   {
+    value: "Cointreau",
     name_english: "Cointreau",
     name_spanish: "Cointreau",
     description_spanish:
@@ -795,6 +862,7 @@ export const distillates_spirits = [
       "Fundado en 1849 en Angers, Francia, por los hermanos Cointreau. / Founded in 1849 in Angers, France, by the Cointreau brothers.",
   },
   {
+    value: "Fernet Branca",
     name_english: "Fernet Branca",
     name_spanish: "Fernet Branca",
     description_spanish:
@@ -811,6 +879,7 @@ export const distillates_spirits = [
       "Creado en Milán en 1845 como remedio medicinal. / Created in Milan in 1845 as a medicinal remedy.",
   },
   {
+    value: "Grand Marnier",
     name_english: "Grand Marnier",
     name_spanish: "Grand Marnier",
     description_spanish:
@@ -827,6 +896,7 @@ export const distillates_spirits = [
       "Creado en 1880 por Louis-Alexandre Marnier-Lapostolle. / Created in 1880 by Louis-Alexandre Marnier-Lapostolle.",
   },
   {
+    value: "Sambuca",
     name_english: "Sambuca",
     name_spanish: "Sambuca",
     description_spanish:
@@ -843,6 +913,7 @@ export const distillates_spirits = [
       "Originario del siglo XIX en Italia, vinculado a la tradición romana. / Originated in 19th century Italy, linked to Roman tradition.",
   },
   {
+    value: "Chartreuse",
     name_english: "Chartreuse",
     name_spanish: "Chartreuse",
     description_spanish:
@@ -854,6 +925,7 @@ export const distillates_spirits = [
       "Elaborado desde 1737 según una fórmula del siglo XVI. / Produced since 1737 based on a 16th-century formula.",
   },
   {
+    value: "Aperol",
     name_english: "Aperol",
     name_spanish: "Aperol",
     description_spanish:
@@ -870,6 +942,7 @@ export const distillates_spirits = [
       "Creado en 1919 en Padua, Italia, por los hermanos Barbieri. / Created in 1919 in Padua, Italy, by the Barbieri brothers.",
   },
   {
+    value: "Midori",
     name_english: "Midori",
     name_spanish: "Midori",
     description_spanish:
@@ -886,6 +959,7 @@ export const distillates_spirits = [
       "Lanzado en 1978 por Suntory, inicialmente para el mercado internacional. / Launched in 1978 by Suntory, initially for the international market.",
   },
   {
+    value: "St-Germain",
     name_english: "St-Germain",
     name_spanish: "St-Germain",
     description_spanish:
@@ -902,6 +976,7 @@ export const distillates_spirits = [
       "Introducido en 2007, inspirado en la tradición francesa de recolectar flores de saúco. / Introduced in 2007, inspired by the French tradition of harvesting elderflowers.",
   },
   {
+    value: "Grenadine",
     name_english: "Grenadine",
     name_spanish: "Granadina",
     description_spanish:
@@ -918,6 +993,7 @@ export const distillates_spirits = [
       "Originario de Francia, su nombre proviene de 'grenade' (granada). Originalmente era un jarabe de granada natural. / Originated in France, its name comes from 'grenade' (pomegranate). Originally a natural pomegranate syrup.",
   },
   {
+    value: "Orgeat Syrup",
     name_english: "Orgeat Syrup",
     name_spanish: "Jarabe de Orgeat",
     description_spanish:
@@ -929,6 +1005,7 @@ export const distillates_spirits = [
       "De origen francés, inicialmente hecho con cebada (orge) y almendras. Popularizado en EE.UU. durante la era tiki. / French origin, initially made with barley (orge) and almonds. Popularized in the U.S. during the tiki era.",
   },
   {
+    value: "Simple Syrup",
     name_english: "Simple Syrup",
     name_spanish: "Jarabe Simple",
     description_spanish:
@@ -940,6 +1017,7 @@ export const distillates_spirits = [
       "Utilizado desde el siglo XIX en la coctelería clásica. / Used since the 19th century in classic mixology.",
   },
   {
+    value: "Agave Syrup",
     name_english: "Agave Syrup",
     name_spanish: "Jarabe de Agave",
     description_spanish:
@@ -956,6 +1034,7 @@ export const distillates_spirits = [
       "Producido en México desde la época prehispánica, modernizado en el siglo XX. / Produced in Mexico since pre-Hispanic times, modernized in the 20th century.",
   },
   {
+    value: "Honey Syrup",
     name_english: "Honey Syrup",
     name_spanish: "Jarabe de Miel",
     description_spanish:
@@ -967,6 +1046,7 @@ export const distillates_spirits = [
       "Usado desde la antigüedad en bebidas medicinales y alcohólicas. / Used since antiquity in medicinal and alcoholic drinks.",
   },
   {
+    value: "Demerara Syrup",
     name_english: "Demerara Syrup",
     name_spanish: "Jarabe Demerara",
     description_spanish:
@@ -983,6 +1063,7 @@ export const distillates_spirits = [
       "Nombrado por la región de Demerara en Guyana, asociado al ron colonial. / Named after the Demerara region in Guyana, linked to colonial rum.",
   },
   {
+    value: "Falernum",
     name_english: "Falernum",
     name_spanish: "Falernum",
     description_spanish:
@@ -999,6 +1080,7 @@ export const distillates_spirits = [
       "Originario de Barbados en el siglo XIX, posiblemente basado en un vino especiado romano. / Originated in Barbados in the 19th century, possibly based on a Roman spiced wine.",
   },
   {
+    value: "Maple Syrup",
     name_english: "Maple Syrup",
     name_spanish: "Jarabe de Arce",
     description_spanish:
@@ -1015,6 +1097,7 @@ export const distillates_spirits = [
       "Utilizado por pueblos indígenas de Norteamérica, comercializado desde el siglo XVIII. / Used by Indigenous peoples of North America, commercialized since the 18th century.",
   },
   {
+    value: "Chocolate Syrup",
     name_english: "Chocolate Syrup",
     name_spanish: "Jarabe de Chocolate",
     description_spanish:
@@ -1031,6 +1114,7 @@ export const distillates_spirits = [
       "Popularizado en el siglo XX con el auge de los cócteles cremosos. / Popularized in the 20th century with the rise of creamy cocktails.",
   },
   {
+    value: "Rose Syrup",
     name_english: "Rose Syrup",
     name_spanish: "Jarabe de Rosa",
     description_spanish:
@@ -1047,3 +1131,17 @@ export const distillates_spirits = [
       "Usado en la gastronomía persa y árabe durante siglos, adaptado a la coctelería en los 2000s. / Used in Persian and Arab cuisine for centuries, adapted to mixology in the 2000s.",
   },
 ];
+
+
+// ----- inputs -----
+// name: string;
+// distilled:string;
+// ingredients: string[];
+// typeIce: string;
+// garnish?: string;
+// glass:string;
+// mixinMethod: string;
+// instructions: string[];
+// image:string;
+
+

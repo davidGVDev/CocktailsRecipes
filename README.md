@@ -16,6 +16,10 @@ Una aplicación web moderna para explorar y descubrir recetas de cócteles delic
 - 🎯 Navegación fluida con React Router
 - 🎭 Animaciones suaves con Motion
 - 🎨 Estilos personalizables con Tailwind CSS
+- 🧩 Componentes UI reutilizables con Shadcn/UI
+- 📋 Formularios interactivos con Formik y Yup
+- 🌐 Soporte multiidioma (inglés/español)
+- 🛠️ Herramientas de cóctelería interactivas
 
 ## 🚀 Tecnologías Utilizadas
 
@@ -25,7 +29,26 @@ Una aplicación web moderna para explorar y descubrir recetas de cócteles delic
 - **Bundler**: Vite
 - **Enrutamiento**: React Router
 - **Animaciones**: Motion
-- **Iconos**: Lucide React
+- **Iconos**: Lucide React, Phosphor Icons
+- **Formularios**: Formik, Yup
+- **Componentes UI**: Radix UI, Shadcn/UI
+- **Utilidades**: class-variance-authority, clsx, tailwind-merge
+
+## 🏗️ Estructura del Proyecto
+
+```
+src/
+├── components/          # Componentes reutilizables
+│   ├── ui/              # Componentes de UI básicos
+│   └── magicui/         # Componentes con efectos especiales
+├── cocktailsRecipes/    # Funcionalidad principal de cócteles
+│   ├── components/      # Componentes específicos de cócteles
+│   ├── interfaces/      # Definiciones de tipos
+│   └── routes/          # Rutas específicas de cócteles
+├── lib/                 # Utilidades y helpers
+├── router/              # Configuración de enrutamiento
+└── data.ts              # Datos de cócteles
+```
 
 ## 📦 Instalación
 
@@ -51,6 +74,15 @@ npm run dev
 - `npm run build`: Construye la aplicación para producción
 - `npm run lint`: Ejecuta el linter
 - `npm run preview`: Previsualiza la build de producción
+
+## 🧪 Características de la API de Cócteles
+
+- Búsqueda por ingredientes
+- Filtrado por método de preparación
+- Categorización por tipos de vasos
+- Selección de tipos de hielo
+- Opciones de guarniciones
+- Base de datos de destilados y licores
 
 ## 📝 Licencia
 

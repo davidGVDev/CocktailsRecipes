@@ -16,10 +16,14 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
+interface ComboBoxProps {
+  data: any[];
+  value: string;
+  onValueChange: (value: string) => void;
+}
 
-export function ComboBoxComponente({data}: any) {
+export function ComboBoxComponente({ data, value, onValueChange }: ComboBoxProps) {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState("");
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -45,7 +49,7 @@ export function ComboBoxComponente({data}: any) {
                   key={item.value}
                   value={item.value}
                   onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue);
+                    onValueChange(currentValue === value ? "" : currentValue);
                     setOpen(false);
                   }}
                 >

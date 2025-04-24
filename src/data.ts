@@ -1132,6 +1132,36 @@ export const distillates_spirits = [
   },
 ];
 
+// {
+//   "name": "Conga",
+//   "distilled": "Vodka",
+//   "iceType": "Sphere Ice",
+//   "garnish": "Lemon wedge",
+//   "glass": "Old Fashioned Glass (Rocks Glass)",
+//   "mixingMethod": "Building",
+//   "ingredients": [
+//       {
+//           "id": "1745505950194",
+//           "name": "inge"
+//       },
+//       {
+//           "id": "1745505963564",
+//           "name": "inge"
+//       }
+//   ],
+//   "instructions": [
+//       {
+//           "id": "1745505950194",
+//           "name": "inst"
+//       },
+//       {
+//           "id": "1745505967358",
+//           "name": "inst"
+//       }
+//   ],
+//   "image": "C:\\fakepath\\21c90473366776f74e9e5d7ed245b9a4.jpg"
+// }
+
 
 // ----- inputs -----
 // name: string;

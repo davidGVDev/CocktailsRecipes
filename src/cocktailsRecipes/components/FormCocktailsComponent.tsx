@@ -9,22 +9,9 @@ import { iceTypes } from "../../data";
 import { garnishTypes } from "../../data";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { PlusCircle, MinusCircle } from "lucide-react";
-
-interface Ingredient {
-  id: string;
-  name: string;
-}
-
-interface FormValues {
-  name: string;
-  distilled: string;
-  iceType: string;
-  garnish: string;
-  glass: string;
-  mixingMethod: string;
-  ingredients: Ingredient[];
-}
+import { DinamicListComponent } from "./DinamicListComponent";
+import { FormValues } from "../interfaces/interfaces";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export const FormCocktailsComponent = () => {
   const formik = useFormik<FormValues>({
@@ -35,7 +22,9 @@ export const FormCocktailsComponent = () => {
       garnish: "",
       glass: "",
       mixingMethod: "",
-      ingredients: [{ id: "1", name: "" }],
+      ingredients: [{ id: Date.now().toString(), name: "" }],
+      instructions: [{ id: Date.now().toString(), name: "" }],
+      image: "",
     },
     validationSchema: Yup.object({
       name: Yup.string().required("Required"),
@@ -50,27 +39,18 @@ export const FormCocktailsComponent = () => {
           name: Yup.string().required("Required"),
         })
       ),
+      instructions: Yup.array().of(
+        Yup.object().shape({
+          id: Yup.string().required(),
+          name: Yup.string().required("Required"),
+        })
+      ),
+      image: Yup.string().required("Required"),
     }),
-    onSubmit: () => {},
+    onSubmit: (values) => {
+      console.log(values);
+    },
   });
-
-  const addIngredient = () => {
-    const newIngredient = {
-      id: Date.now().toString(),
-      name: "",
-    };
-    formik.setFieldValue("ingredients", [
-      ...formik.values.ingredients,
-      newIngredient,
-    ]);
-  };
-
-  const removeIngredient = (id: string) => {
-    const filteredIngredients = formik.values.ingredients.filter(
-      (ingredient) => ingredient.id !== id
-    );
-    formik.setFieldValue("ingredients", filteredIngredients);
-  };
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -132,52 +112,28 @@ export const FormCocktailsComponent = () => {
           </div>
 
           <div className="div7">
-            <div className="div7-1">
-              <Label className="mb-2">Ingredients</Label>
-              <div className="add" onClick={addIngredient}>
-                <PlusCircle size={15} />
-              </div>
-            </div>
-            {formik.values.ingredients.map((ingredient, index) => (
-              <div key={ingredient.id} className="general-list">
-                <Input
-                  type="text"
-                  placeholder="Ingredients"
-                  value={ingredient.name}
-                  onChange={(e) => {
-                    const newIngredients = [...formik.values.ingredients];
-                    newIngredients[index].name = e.target.value;
-                    formik.setFieldValue("ingredients", newIngredients);
-                  }}
-                />
-                <div className="remove" onClick={() => removeIngredient(ingredient.id)}>
-                  <MinusCircle size={15} />
-                </div>
-              </div>
-            ))}
+            <DinamicListComponent formik={formik} type="ingredients" title="Ingredients" />
           </div>
-          
           <div className="div8">
-            <div className="div8-1">
-              <Label className="mb-2">Instructions</Label>
-              <div className="add">
-                <PlusCircle size={15} />
-              </div>
-            </div>
-            <div className="general-list">
-              <Input type="text" placeholder="Instructions" />
-              <div className="remove">
-                <MinusCircle size={15} />
-              </div>
-            </div>
+            <DinamicListComponent formik={formik} type="instructions" title="Instructions" />
           </div>
+
           <div className="div9">
             <Label className="mb-2">Image</Label>
-            <Input type="file" placeholder="Image" />
+            <Input
+              type="file"
+              placeholder="Image"
+              value={formik.values.image}
+              onChange={(e) => formik.setFieldValue("image", e.target.value)}
+            />
           </div>
           <div className="div10">
-            <Label className="mb-2">Boton</Label>
-            <Button type="submit">Save</Button>
+            <Button
+              className="cursor-pointer w-full bg-green-500 text-white rounded-md hover:bg-green-600"
+              type="submit"
+            >
+              Save
+            </Button>
           </div>
         </div>
       </div>

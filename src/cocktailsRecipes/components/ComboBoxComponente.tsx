@@ -20,15 +20,24 @@ interface ComboBoxProps {
   data: any[];
   value: string;
   onValueChange: (value: string) => void;
+  onFocus: (value: string) => void;
 }
 
-export function ComboBoxComponente({ data, value, onValueChange }: ComboBoxProps) {
+export function ComboBoxComponente({ data, value, onValueChange, onFocus }: ComboBoxProps) {
   const [open, setOpen] = useState(false);
 
+  
+
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    <Popover open={open} onOpenChange={(isOpen) => {
+      setOpen(isOpen);
+      if (isOpen) {
+        onFocus(value);
+      }
+    }}>
       <PopoverTrigger>
         <Button
+          type="button"
           variant="outline"
           role="combobox"
           aria-expanded={open}

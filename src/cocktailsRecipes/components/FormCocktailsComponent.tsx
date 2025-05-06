@@ -2,18 +2,16 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ComboBoxComponente } from "./ComboBoxComponente";
 import { Button } from "@/components/ui/button";
-import { distillates_spirits } from "../../data";
-import { mixingMethods } from "../../data";
-import { glassware } from "../../data";
-import { iceTypes } from "../../data";
-import { garnishTypes } from "../../data";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { DinamicListComponent } from "./DinamicListComponent";
 import { FormValues } from "../interfaces/interfaces";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { useCallApi } from "../hooks/useCallApi";
+import axios from "axios";
 
 export const FormCocktailsComponent = () => {
+  const { distillates_spirits, iceTypes, garnishTypes, glassware, mixingMethods, callApi } = useCallApi();
+  
   const formik = useFormik<FormValues>({
     initialValues: {
       name: "",
@@ -48,7 +46,13 @@ export const FormCocktailsComponent = () => {
       image: Yup.string().required("Required"),
     }),
     onSubmit: (values) => {
-      console.log(values);
+      axios.post(`${import.meta.env.VITE_API_BASE_URL}cocktails`, values)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     },
   });
 
@@ -74,6 +78,7 @@ export const FormCocktailsComponent = () => {
               onValueChange={(value) =>
                 formik.setFieldValue("distilled", value)
               }
+              onFocus={() => callApi('distillates-spirits')}
             />
           </div>
           <div className="div3">
@@ -82,6 +87,7 @@ export const FormCocktailsComponent = () => {
               data={iceTypes}
               value={formik.values.iceType}
               onValueChange={(value) => formik.setFieldValue("iceType", value)}
+              onFocus={() => callApi('ice-types')}
             />
           </div>
           <div className="div4">
@@ -90,6 +96,7 @@ export const FormCocktailsComponent = () => {
               data={garnishTypes}
               value={formik.values.garnish}
               onValueChange={(value) => formik.setFieldValue("garnish", value)}
+              onFocus={() => callApi('garnish-types')}
             />
           </div>
           <div className="div5">
@@ -98,6 +105,7 @@ export const FormCocktailsComponent = () => {
               data={glassware}
               value={formik.values.glass}
               onValueChange={(value) => formik.setFieldValue("glass", value)}
+              onFocus={() => callApi('glassware')}
             />
           </div>
           <div className="div6">
@@ -108,6 +116,7 @@ export const FormCocktailsComponent = () => {
               onValueChange={(value) =>
                 formik.setFieldValue("mixingMethod", value)
               }
+              onFocus={() => callApi('mixing-methods')}
             />
           </div>
 

@@ -46,7 +46,18 @@ export const FormCocktailsComponent = () => {
       image: Yup.string().required("Required"),
     }),
     onSubmit: (values) => {
-      axios.post(`${import.meta.env.VITE_API_BASE_URL}cocktails`, values)
+      const formData = new FormData();
+      formData.append("name", values.name);
+      formData.append("distilled", values.distilled);
+      formData.append("iceType", values.iceType);
+      formData.append("garnish", values.garnish);
+      formData.append("glass", values.glass);
+      formData.append("mixingMethod", values.mixingMethod);
+      formData.append("ingredients", JSON.stringify(values.ingredients));
+      formData.append("instructions", JSON.stringify(values.instructions));
+      formData.append("image", values.image);
+    
+      axios.post(`${import.meta.env.VITE_API_BASE_URL}cocktails`, formData)
       .then((response) => {
         console.log(response);
       })
@@ -132,8 +143,12 @@ export const FormCocktailsComponent = () => {
             <Input
               type="file"
               placeholder="Image"
-              value={formik.values.image}
-              onChange={(e) => formik.setFieldValue("image", e.target.value)}
+              onChange={(e) => {
+                if (e.target.files && e.target.files[0]) {
+                  const file = e.target.files[0];
+                  formik.setFieldValue("image", file);
+                }
+              }}
             />
           </div>
           <div className="div10">

@@ -64,6 +64,7 @@ export const FormCocktailsComponent = () => {
       formData.append("ingredients", JSON.stringify(values.ingredients));
       formData.append("instructions", JSON.stringify(values.instructions));
       formData.append("image", values.image);
+      // console.log(formik.isValid);
 
       axios
         .post(`${import.meta.env.VITE_API_BASE_URL}cocktails`, formData)
@@ -89,10 +90,12 @@ export const FormCocktailsComponent = () => {
               value={formik.values.name}
               onChange={formik.handleChange}
               className={cn(
-                formik.errors.name && "border-red-500 focus-visible:ring-red-500"
+                formik.errors.name &&
+                  formik.touched.name &&
+                  "border-red-500 focus-visible:ring-red-500"
               )}
             />
-            {formik.errors.name && (
+            {formik.errors.name && formik.touched.name && (
               <p className="ml-1 text-red-500 text-sm">{formik.errors.name}</p>
             )}
           </div>
@@ -107,9 +110,12 @@ export const FormCocktailsComponent = () => {
               }
               onFocus={() => callApi("distillates-spirits")}
               error={formik.errors.distilled}
+              touched={formik.touched.distilled}
             />
-            {formik.errors.distilled && (
-              <p className="ml-1 text-red-500 text-sm">{formik.errors.distilled}</p>
+            {formik.errors.distilled && formik.touched.distilled && (
+              <p className="ml-1 text-red-500 text-sm">
+                {formik.errors.distilled}
+              </p>
             )}
           </div>
           <div className="div3">
@@ -120,9 +126,12 @@ export const FormCocktailsComponent = () => {
               onValueChange={(value) => formik.setFieldValue("iceType", value)}
               onFocus={() => callApi("ice-types")}
               error={formik.errors.iceType}
+              touched={formik.touched.iceType}
             />
-            {formik.errors.iceType && (
-              <p className="ml-1 text-red-500 text-sm">{formik.errors.iceType}</p>
+            {formik.errors.iceType && formik.touched.iceType && (
+              <p className="ml-1 text-red-500 text-sm">
+                {formik.errors.iceType}
+              </p>
             )}
           </div>
           <div className="div4">
@@ -133,9 +142,12 @@ export const FormCocktailsComponent = () => {
               onValueChange={(value) => formik.setFieldValue("garnish", value)}
               onFocus={() => callApi("garnish-types")}
               error={formik.errors.garnish}
+              touched={formik.touched.garnish}
             />
-            {formik.errors.garnish && (
-              <p className="ml-1 text-red-500 text-sm">{formik.errors.garnish}</p>
+            {formik.errors.garnish && formik.touched.garnish && (
+              <p className="ml-1 text-red-500 text-sm">
+                {formik.errors.garnish}
+              </p>
             )}
           </div>
           <div className="div5">
@@ -146,8 +158,9 @@ export const FormCocktailsComponent = () => {
               onValueChange={(value) => formik.setFieldValue("glass", value)}
               onFocus={() => callApi("glassware")}
               error={formik.errors.glass}
+              touched={formik.touched.glass}
             />
-            {formik.errors.glass && (
+            {formik.errors.glass && formik.touched.glass && (
               <p className="ml-1 text-red-500 text-sm">{formik.errors.glass}</p>
             )}
           </div>
@@ -161,8 +174,9 @@ export const FormCocktailsComponent = () => {
               }
               onFocus={() => callApi("mixing-methods")}
               error={formik.errors.mixingMethod}
+              touched={formik.touched.mixingMethod}
             />
-            {formik.errors.mixingMethod && (
+            {formik.errors.mixingMethod && formik.touched.mixingMethod && (
               <p className="ml-1 text-red-500 text-sm">
                 {formik.errors.mixingMethod}
               </p>
@@ -174,6 +188,8 @@ export const FormCocktailsComponent = () => {
               formik={formik}
               type="ingredients"
               title="Ingredients"
+              error={formik.errors.ingredients as { name?: string }[]}
+              touched={formik.touched.ingredients as unknown as boolean}
             />
           </div>
           <div className="div8">
@@ -181,6 +197,8 @@ export const FormCocktailsComponent = () => {
               formik={formik}
               type="instructions"
               title="Instructions"
+              error={formik.errors.instructions as { name?: string }[]}
+              touched={formik.touched.instructions as unknown as boolean}
             />
           </div>
 
@@ -196,13 +214,13 @@ export const FormCocktailsComponent = () => {
                 }
               }}
               className={cn(
-                formik.errors.image && "border-red-500 focus-visible:ring-red-500"
+                formik.errors.image &&
+                  formik.touched.image &&
+                  "border-red-500 focus-visible:ring-red-500"
               )}
             />
-            {formik.errors.image && (
-              <p className="ml-1 text-red-500 text-sm">
-                {formik.errors.image}
-              </p>
+            {formik.errors.image && formik.touched.image && (
+              <p className="ml-1 text-red-500 text-sm">{formik.errors.image}</p>
             )}
           </div>
           <div className="div10">

@@ -2,15 +2,20 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { MinusCircle, PlusCircle } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export const DinamicListComponent = ({
   formik,
   type,
   title,
+  error,
+  touched,
 }: {
   formik: any;
   type: string;
   title: string;
+  error?: { name?: string }[];
+  touched?: boolean;
 }) => {
   const addItem = () => {
     const newItem = {
@@ -35,7 +40,7 @@ export const DinamicListComponent = ({
           <PlusCircle size={15} />
         </div>
       </div>
-      <ScrollArea className="h-50 w-full border rounded-md p-3 bg-white">
+      <ScrollArea className={cn("h-50 w-full border rounded-md p-3 bg-white", error && error.length > 0 && touched && "border-red-500 focus-visible:ring-red-500")}>
         {formik.values[type].map((item: any, index: number) => (
           <div key={item.id} className="general-list">
             <Input
@@ -54,6 +59,11 @@ export const DinamicListComponent = ({
           </div>
         ))}
       </ScrollArea>
+      {error && error.length > 0 && touched && (
+        <p className="ml-1 text-red-500 text-sm">
+          {error.map((item) => item.name).join(", ")}
+        </p>
+      )}
     </>
   );
 };

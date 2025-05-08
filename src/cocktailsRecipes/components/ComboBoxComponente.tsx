@@ -22,12 +22,11 @@ interface ComboBoxProps {
   onValueChange: (value: string) => void;
   onFocus: (value: string) => void;
   error?: string;
+  touched?: boolean;
 }
 
-export function ComboBoxComponente({ data, value, onValueChange, onFocus, error }: ComboBoxProps) {
+export function ComboBoxComponente({ data, value, onValueChange, onFocus, error, touched }: ComboBoxProps) {
   const [open, setOpen] = useState(false);
-
-  
 
   return (
     <Popover open={open} onOpenChange={(isOpen) => {
@@ -44,7 +43,7 @@ export function ComboBoxComponente({ data, value, onValueChange, onFocus, error 
           aria-expanded={open}
           className={cn(
             "w-[328px] justify-between",
-            error && "border-red-500 focus-visible:ring-red-500"
+            error && touched && "border-red-500 focus-visible:ring-red-500"
           )}
         >
           {value ? value : "Select item..."}

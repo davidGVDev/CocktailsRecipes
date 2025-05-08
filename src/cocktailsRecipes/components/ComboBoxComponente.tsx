@@ -21,9 +21,10 @@ interface ComboBoxProps {
   value: string;
   onValueChange: (value: string) => void;
   onFocus: (value: string) => void;
+  error?: string;
 }
 
-export function ComboBoxComponente({ data, value, onValueChange, onFocus }: ComboBoxProps) {
+export function ComboBoxComponente({ data, value, onValueChange, onFocus, error }: ComboBoxProps) {
   const [open, setOpen] = useState(false);
 
   
@@ -41,7 +42,10 @@ export function ComboBoxComponente({ data, value, onValueChange, onFocus }: Comb
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[328px] justify-between"
+          className={cn(
+            "w-[328px] justify-between",
+            error && "border-red-500 focus-visible:ring-red-500"
+          )}
         >
           {value ? value : "Select item..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />

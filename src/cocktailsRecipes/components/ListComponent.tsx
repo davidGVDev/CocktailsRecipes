@@ -1,11 +1,25 @@
-
+import { useEffect } from "react"
+import { useCallApi } from "../hooks/useCallApi"
 
 export const ListComponent = () => {
+  const { cocktails, callApi } = useCallApi();
+  useEffect(() => {
+    callApi("cocktails");
+  }, []);
   return (
-    <div className="rounded-lg border-2 border-blue-500 m-2 p-2 h-auto w-100%">
+    <>
+    
+    <div className="m-2 p-2 h-auto w-100%">
       <div className="cocktailsRecipes-content">
-        <div>Cocktails and Recipes</div>
+        {
+          cocktails.map((cocktail) => (
+            
+              <h2>{cocktail.name} - {cocktail.id}</h2>
+            
+          ))
+        }
       </div>
     </div>
+    </>
   )
 }

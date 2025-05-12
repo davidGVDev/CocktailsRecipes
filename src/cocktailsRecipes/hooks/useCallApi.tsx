@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { distillates_spirits, iceTypes, garnishTypes, glassware, mixingMethods } from "../interfaces/interfaces";
+import { distillates_spirits, iceTypes, garnishTypes, glassware, mixingMethods, FormValues } from "../interfaces/interfaces";
 
 export const useCallApi = () => {
 
@@ -9,6 +9,7 @@ export const useCallApi = () => {
     const [garnishTypes, setGarnishTypes] = useState<garnishTypes[]>([]);
     const [glassware, setGlassware] = useState<glassware[]>([]);
     const [mixingMethods, setMixingMethods] = useState<mixingMethods[]>([]);
+    const [cocktails, setCocktails] = useState<FormValues[]>([]);
 
   const callApi = async (value: string) => {
     if (value === 'distillates-spirits' && distillates_spirits.length > 0) return;
@@ -29,6 +30,8 @@ export const useCallApi = () => {
         setGlassware(response.data);
       } else if (value === 'mixing-methods') {
         setMixingMethods(response.data);
+      } else if (value === 'cocktails') {
+        setCocktails(response.data);
       }
     } catch (error) {
       console.log({ error });
@@ -42,6 +45,7 @@ export const useCallApi = () => {
     garnishTypes,
     glassware,
     mixingMethods,
+    cocktails,
     callApi,
   };
 };

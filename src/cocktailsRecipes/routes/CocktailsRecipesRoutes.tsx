@@ -1,6 +1,6 @@
 
 import { Routes, Route } from 'react-router-dom'
-import { CocktailsRecipesPage } from '../cocktailsRecipesPage'
+import { CocktailsRecipesPage } from '../CocktailsRecipesPage'
 
 export const CocktailsRecipesRoutes = () => {
   return (

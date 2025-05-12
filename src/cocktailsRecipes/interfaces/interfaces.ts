@@ -55,6 +55,7 @@ export interface Ingredient {
 }
 
 export interface FormValues {
+  id: string;
   name: string;
   distilled: string;
   iceType: string;

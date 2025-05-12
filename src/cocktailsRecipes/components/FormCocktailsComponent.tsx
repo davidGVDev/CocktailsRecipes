@@ -11,6 +11,7 @@ import axios from "axios";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
+import "animate.css";
 
 
 export const FormCocktailsComponent = () => {
@@ -68,11 +69,21 @@ export const FormCocktailsComponent = () => {
       formData.append("ingredients", JSON.stringify(values.ingredients));
       formData.append("instructions", JSON.stringify(values.instructions));
       formData.append("image", values.image);
-      // console.log(formik.isValid);
+
+      const submitButton = document.getElementById('submit-button');
+      if (submitButton) {
+        submitButton.classList.add('animate__animated', 'animate__pulse');
+      }
+
       axios
         .post(`${import.meta.env.VITE_API_BASE_URL}cocktails`, formData)
         .then((response) => {
           console.log(response);
+          const event = new CustomEvent('newCocktail', { 
+            detail: response.data.id 
+          });
+          window.dispatchEvent(event);
+
           toast.success("Cocktail created successfully", {
             style: {
               background: "green",
@@ -85,6 +96,7 @@ export const FormCocktailsComponent = () => {
             },
           });
           formik.resetForm();
+          callApi("cocktails");
         })
         .catch((error) => {
           console.log(error);
@@ -100,6 +112,11 @@ export const FormCocktailsComponent = () => {
               onClick: () => console.log("Undo"),
             },
           });
+        })
+        .finally(() => {
+          if (submitButton) {
+            submitButton.classList.remove('animate__animated', 'animate__pulse');
+          }
         });
     },
   });
@@ -263,6 +280,7 @@ export const FormCocktailsComponent = () => {
             </div>
             <div className="div10">
               <Button
+                id="submit-button"
                 className="cursor-pointer w-full bg-green-500 text-white rounded-md hover:bg-green-600"
                 type="submit"
               >

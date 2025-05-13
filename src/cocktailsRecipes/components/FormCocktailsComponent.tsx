@@ -5,16 +5,22 @@ import { Button } from "@/components/ui/button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { DinamicListComponent } from "./DinamicListComponent";
-import { FormValues } from "../interfaces/interfaces";
+import { FormValues, Cocktail } from "../interfaces/interfaces";
 import { useCallApi } from "../hooks/useCallApi";
 import axios from "axios";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
 import "animate.css";
+import { useEffect } from "react";
 
-
-export const FormCocktailsComponent = () => {
+export const FormCocktailsComponent = ({
+  cocktail,
+  isSheet = false,
+}: {
+  cocktail?: Cocktail;
+  isSheet?: boolean;
+}) => {
   const {
     distillates_spirits,
     iceTypes,
@@ -26,16 +32,20 @@ export const FormCocktailsComponent = () => {
 
   const formik = useFormik<FormValues>({
     initialValues: {
-      id: "",
-      name: "",
-      distilled: "",
-      iceType: "",
-      garnish: "",
-      glass: "",
-      mixingMethod: "",
-      ingredients: [{ id: Date.now().toString(), name: "" }],
-      instructions: [{ id: Date.now().toString(), name: "" }],
-      image: "",
+      id: cocktail?.id || "",
+      name: cocktail?.name || "",
+      distilled: cocktail?.distilled || "",
+      iceType: cocktail?.iceType || "",
+      garnish: cocktail?.garnish || "",
+      glass: cocktail?.glass || "",
+      mixingMethod: cocktail?.mixingMethod || "",
+      ingredients: cocktail?.ingredients || [
+        { id: Date.now().toString(), name: "" },
+      ],
+      instructions: cocktail?.instructions || [
+        { id: Date.now().toString(), name: "" },
+      ],
+      image: cocktail?.image || "",
     },
     validationSchema: Yup.object({
       name: Yup.string().required("Name is required"),
@@ -56,75 +66,185 @@ export const FormCocktailsComponent = () => {
           name: Yup.string().required("Instructions is required"),
         })
       ),
-      image: Yup.string().required("Image is required"),
+      image: Yup.mixed().when([], {
+        is: () => !cocktail?.id,
+        then: (schema) => schema.required("Image is required"),
+        otherwise: (schema) => schema.notRequired(),
+      }),
     }),
     onSubmit: (values) => {
-      const formData = new FormData();
-      formData.append("name", values.name);
-      formData.append("distilled", values.distilled);
-      formData.append("iceType", values.iceType);
-      formData.append("garnish", values.garnish);
-      formData.append("glass", values.glass);
-      formData.append("mixingMethod", values.mixingMethod);
-      formData.append("ingredients", JSON.stringify(values.ingredients));
-      formData.append("instructions", JSON.stringify(values.instructions));
-      formData.append("image", values.image);
-
-      const submitButton = document.getElementById('submit-button');
+      const submitButton = document.getElementById("submit-button");
       if (submitButton) {
-        submitButton.classList.add('animate__animated', 'animate__pulse');
+        submitButton.classList.add("animate__animated", "animate__pulse");
       }
 
-      axios
-        .post(`${import.meta.env.VITE_API_BASE_URL}cocktails`, formData)
-        .then((response) => {
-          console.log(response);
-          const event = new CustomEvent('newCocktail', { 
-            detail: response.data.id 
-          });
-          window.dispatchEvent(event);
+      const url = cocktail?.id
+        ? `${import.meta.env.VITE_API_BASE_URL}cocktails/${cocktail.id}`
+        : `${import.meta.env.VITE_API_BASE_URL}cocktails`;
 
-          toast.success("Cocktail created successfully", {
-            style: {
-              background: "green",
-              color: "white",
-              border: "green",
-            },
-            action: {
-              label: "Undo",
-              onClick: () => console.log("Undo"),
-            },
+      if (cocktail?.id) {
+        // EDICIÓN: Enviar como JSON
+        const data = {
+          name: values.name,
+          distilled: values.distilled,
+          iceType: values.iceType,
+          garnish: values.garnish,
+          glass: values.glass,
+          mixingMethod: values.mixingMethod,
+          ingredients: values.ingredients,
+          instructions: values.instructions,
+          image: values.image,
+        };
+        axios
+          .patch(url, data)
+          .then((response) => {
+            console.log(response);
+            const event = new CustomEvent("newCocktail", {
+              detail: response.data.id,
+            });
+            window.dispatchEvent(event);
+
+            toast.success(
+              `Cocktail ${cocktail?.id ? "updated" : "created"} successfully`,
+              {
+                style: {
+                  background: "green",
+                  color: "white",
+                  border: "green",
+                },
+                action: {
+                  label: "Undo",
+                  onClick: () => console.log("Undo"),
+                },
+              }
+            );
+            formik.resetForm();
+            callApi("cocktails");
+          })
+          .catch((error) => {
+            console.log(error);
+            console.log(formik.values);
+            toast.error(
+              `Cocktail ${cocktail?.id ? "update" : "creation"} failed`,
+              {
+                description: error.response.data.message,
+                style: {
+                  background: "red",
+                  color: "white",
+                  border: "red",
+                },
+                action: {
+                  label: "Undo",
+                  onClick: () => console.log("Undo"),
+                },
+              }
+            );
+          })
+          .finally(() => {
+            if (submitButton) {
+              submitButton.classList.remove(
+                "animate__animated",
+                "animate__pulse"
+              );
+            }
           });
-          formik.resetForm();
-          callApi("cocktails");
-        })
-        .catch((error) => {
-          console.log(error);
-          toast.error("Cocktail created failed", {
-            description: error.response.data.message,
-            style: {
-              background: "red",
-              color: "white",
-              border: "red",
-            },
-            action: {
-              label: "Undo",
-              onClick: () => console.log("Undo"),
-            },
+      } else {
+        // CREACIÓN: Enviar como FormData
+        const formData = new FormData();
+        formData.append("name", values.name);
+        formData.append("distilled", values.distilled);
+        formData.append("iceType", values.iceType);
+        formData.append("garnish", values.garnish);
+        formData.append("glass", values.glass);
+        formData.append("mixingMethod", values.mixingMethod);
+        formData.append("ingredients", JSON.stringify(values.ingredients));
+        formData.append("instructions", JSON.stringify(values.instructions));
+        if (values.image) {
+          formData.append("image", values.image);
+        }
+        axios
+          .post(url, formData)
+          .then((response) => {
+            console.log(response);
+            const event = new CustomEvent("newCocktail", {
+              detail: response.data.id,
+            });
+            window.dispatchEvent(event);
+
+            toast.success(
+              `Cocktail ${cocktail?.id ? "updated" : "created"} successfully`,
+              {
+                style: {
+                  background: "green",
+                  color: "white",
+                  border: "green",
+                },
+                action: {
+                  label: "Undo",
+                  onClick: () => console.log("Undo"),
+                },
+              }
+            );
+            formik.resetForm();
+            callApi("cocktails");
+          })
+          .catch((error) => {
+            console.log(error);
+            console.log(formik.values);
+            toast.error(
+              `Cocktail ${cocktail?.id ? "update" : "creation"} failed`,
+              {
+                description: error.response.data.message,
+                style: {
+                  background: "red",
+                  color: "white",
+                  border: "red",
+                },
+                action: {
+                  label: "Undo",
+                  onClick: () => console.log("Undo"),
+                },
+              }
+            );
+          })
+          .finally(() => {
+            if (submitButton) {
+              submitButton.classList.remove(
+                "animate__animated",
+                "animate__pulse"
+              );
+            }
           });
-        })
-        .finally(() => {
-          if (submitButton) {
-            submitButton.classList.remove('animate__animated', 'animate__pulse');
-          }
-        });
+      }
     },
   });
 
+  useEffect(() => {
+    if (cocktail) {
+      formik.setValues({
+        id: cocktail.id,
+        name: cocktail.name,
+        distilled: cocktail.distilled,
+        iceType: cocktail.iceType,
+        garnish: cocktail.garnish,
+        glass: cocktail.glass,
+        mixingMethod: cocktail.mixingMethod,
+        ingredients: cocktail.ingredients,
+        instructions: cocktail.instructions,
+        image: cocktail.image,
+      });
+    }
+  }, [cocktail]);
+
   return (
     <>
-      <form onSubmit={formik.handleSubmit}>
-        <div className="m-2 p-2 h-auto w-100%">
+      <form
+        onSubmit={formik.handleSubmit}
+        className={`w-full max-w-full overflow-x-hidden ${
+          isSheet ? "form-sheet" : ""
+        }`}
+      >
+        <div className="m-2 p-2 h-auto w-full">
           <div className="parent">
             <div className="div1">
               <Label className="mb-2">Name</Label>
@@ -135,6 +255,7 @@ export const FormCocktailsComponent = () => {
                 value={formik.values.name}
                 onChange={formik.handleChange}
                 className={cn(
+                  "w-full",
                   formik.errors.name &&
                     formik.touched.name &&
                     "border-red-500 focus-visible:ring-red-500"
@@ -255,36 +376,40 @@ export const FormCocktailsComponent = () => {
               />
             </div>
 
-            <div className="div9">
-              <Label className="mb-2">Image</Label>
-              <Input
-                type="file"
-                placeholder="Image"
-                onChange={(e) => {
-                  if (e.target.files && e.target.files[0]) {
-                    const file = e.target.files[0];
-                    formik.setFieldValue("image", file);
-                  }
-                }}
-                className={cn(
-                  formik.errors.image &&
-                    formik.touched.image &&
-                    "border-red-500 focus-visible:ring-red-500"
+            {/* Campo de imagen solo visible si no está en modo Sheet */}
+            {!isSheet && (
+              <div className="div9">
+                <Label className="mb-2">Image</Label>
+                <Input
+                  type="file"
+                  placeholder="Image"
+                  onChange={(e) => {
+                    if (e.target.files && e.target.files[0]) {
+                      const file = e.target.files[0];
+                      formik.setFieldValue("image", file);
+                    }
+                  }}
+                  className={cn(
+                    "w-full",
+                    formik.errors.image &&
+                      formik.touched.image &&
+                      "border-red-500 focus-visible:ring-red-500"
+                  )}
+                />
+                {formik.errors.image && formik.touched.image && (
+                  <p className="ml-1 text-red-500 text-sm">
+                    {formik.errors.image}
+                  </p>
                 )}
-              />
-              {formik.errors.image && formik.touched.image && (
-                <p className="ml-1 text-red-500 text-sm">
-                  {formik.errors.image}
-                </p>
-              )}
-            </div>
+              </div>
+            )}
             <div className="div10">
               <Button
                 id="submit-button"
                 className="cursor-pointer w-full bg-green-500 text-white rounded-md hover:bg-green-600"
                 type="submit"
               >
-                Save
+                {cocktail?.id ? "Update" : "Save"}
               </Button>
             </div>
           </div>

@@ -66,3 +66,16 @@ export interface FormValues {
   instructions: Ingredient[];
   image: string;
 }
+
+export interface Cocktail {
+  id: string;
+  name: string;
+  distilled: string;
+  iceType: string;
+  garnish: string;
+  glass: string;
+  mixingMethod: string;
+  ingredients: Ingredient[];
+  instructions: Ingredient[];
+  image: string;
+}

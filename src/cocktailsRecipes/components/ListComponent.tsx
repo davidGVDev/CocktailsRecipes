@@ -28,10 +28,20 @@ export const ListComponent = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [editCocktail, setEditCocktail] = useState<Cocktail | null>(null);
+  const [sortedCocktails, setSortedCocktails] = useState<Cocktail[]>([]);
 
   useEffect(() => {
     callApi("cocktails");
   }, []);
+
+  useEffect(() => {
+    const sorted = [...cocktails].sort((a, b) => {
+      if (a.id === newCocktailId) return -1;
+      if (b.id === newCocktailId) return 1;
+      return 0;
+    });
+    setSortedCocktails(sorted);
+  }, [cocktails, newCocktailId]);
 
   useEffect(() => {
     const handleNewCocktail = (event: CustomEvent) => {
@@ -97,7 +107,7 @@ export const ListComponent = () => {
     <>
       <div className="m-2 p-2 h-auto w-100% flex flex-col items-center justify-center">
         <div className="cocktailsRecipes-content flex flex-wrap gap-4 justify-center">
-          {cocktails.map((cocktail) => (
+          {sortedCocktails.map((cocktail) => (
             <Card
               key={cocktail.id}
               id={`cocktail-${cocktail.id}`}

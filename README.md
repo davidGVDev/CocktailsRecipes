@@ -4,6 +4,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 
 Una aplicación web moderna para explorar y descubrir recetas de cócteles deliciosos. Desarrollada con las últimas tecnologías web para ofrecer una experiencia de usuario excepcional.
 
@@ -15,7 +16,7 @@ Una aplicación web moderna para explorar y descubrir recetas de cócteles delic
 - ⚡ Rendimiento optimizado con Vite y React 18
 - 🎯 Navegación fluida con React Router v6
 - 🎭 Animaciones suaves con Framer Motion
-- 🎨 Estilos personalizables con Tailwind CSS
+- 🎨 Estilos personalizables con Tailwind CSS v3
 - 🧩 Componentes UI reutilizables con Shadcn/UI
 - 📋 Formularios interactivos con React Hook Form y Zod
 - 🌐 Soporte multiidioma (inglés/español) con i18next
@@ -23,20 +24,22 @@ Una aplicación web moderna para explorar y descubrir recetas de cócteles delic
 - 🔒 Autenticación y gestión de usuarios
 - 💾 Persistencia de datos con localStorage
 - 📊 Estadísticas de uso y favoritos
+- 📱 PWA (Progressive Web App) soporte
+
 
 ## 🚀 Tecnologías Utilizadas
 
-- **Frontend**: React 18 con TypeScript
-- **Estilos**: Tailwind CSS + Shadcn/UI
-- **Bundler**: Vite
-- **Enrutamiento**: React Router v6
-- **Animaciones**: Framer Motion
-- **Iconos**: Lucide React, Phosphor Icons
-- **Formularios**: React Hook Form, Zod
-- **Componentes UI**: Radix UI, Shadcn/UI
-- **Utilidades**: 
-  - class-variance-authority
-  - axios
+- **Frontend**:
+  - React 18.2+ con TypeScript 5
+  - Vite 5.0 para desarrollo y build
+  - TailwindCSS 3.3+ para estilos
+  - Shadcn/UI para componentes base
+  - Framer Motion 10+ para animaciones
+  - React Router 6.4+ para navegación
+
+- **DevOps**:
+  - Docker para contenedorización
+  - GitHub Actions para CI/CD
 
 ## 🏗️ Estructura del Proyecto
 
@@ -60,13 +63,13 @@ src/
 
 1. Clona el repositorio:
 ```bash
-git clone https://github.com/tu-usuario/cocktails-recipes.git
+git clone https://github.com/davidventura/cocktails-recipes.git
 ```
 
 2. Instala las dependencias:
 ```bash
 cd cocktails-recipes
-npm install
+pnpm install
 ```
 
 3. Configura las variables de entorno:
@@ -74,19 +77,27 @@ npm install
 cp .env.example .env
 ```
 
-4. Inicia el servidor de desarrollo:
+4. Configura la base de datos:
 ```bash
-npm run dev
+pnpm prisma migrate dev
+```
+
+5. Inicia el servidor de desarrollo:
+```bash
+pnpm dev
 ```
 
 ## 🛠️ Scripts Disponibles
 
-- `npm run dev`: Inicia el servidor de desarrollo
-- `npm run build`: Construye la aplicación para producción
-- `npm run lint`: Ejecuta el linter
-- `npm run test`: Ejecuta las pruebas
-- `npm run preview`: Previsualiza la build de producción
-- `npm run format`: Formatea el código con Prettier
+- `pnpm dev`: Inicia el servidor de desarrollo
+- `pnpm build`: Construye la aplicación para producción
+- `pnpm preview`: Previsualiza la build de producción
+- `pnpm test`: Ejecuta las pruebas unitarias
+- `pnpm test:e2e`: Ejecuta las pruebas E2E
+- `pnpm lint`: Ejecuta el linter
+- `pnpm format`: Formatea el código
+- `pnpm db:migrate`: Ejecuta las migraciones de la base de datos
+- `pnpm db:seed`: Puebla la base de datos con datos de ejemplo
 
 ## 🧪 Características de la API de Cócteles
 
@@ -118,9 +129,9 @@ Las contribuciones son bienvenidas. Por favor, sigue estos pasos:
 
 ## 📫 Contacto
 
-David Ventura - [@tu_twitter](https://twitter.com/tu_twitter)
+David Ventura - [@davidventura](https://twitter.com/davidventura)
 
-Link del proyecto: [https://github.com/tu-usuario/cocktails-recipes](https://github.com/tu-usuario/cocktails-recipes)
+Link del proyecto: [https://github.com/davidventura/cocktails-recipes](https://github.com/davidventura/cocktails-recipes)
 
 ---
 
